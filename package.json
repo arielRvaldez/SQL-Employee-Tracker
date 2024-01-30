@@ -1,0 +1,25 @@
+{
+  "name": "employee-tracker",
+  "version": "1.0.0",
+  "description": "employee database",
+  "main": "server.js",
+  "scripts": {
+    "test": "test",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arielRvaldez/SQL-Employee-Tracker.git"
+  },
+  "keywords": [
+    "mySQL",
+    "node.js",
+    "Inquirer"
+  ],
+  "author": "arielRvaldez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arielRvaldez/SQL-Employee-Tracker/issues"
+  },
+  "homepage": "https://github.com/arielRvaldez/SQL-Employee-Tracker#readme"
+}
