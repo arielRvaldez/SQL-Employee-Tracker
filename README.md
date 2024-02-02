@@ -22,6 +22,7 @@ SO THAT I can organize and plan my business
 1. Node.js [Version 20.11.0 LTS] https://nodejs.org/en/
 2. MySQL2 [Version 3.9.1] https://www.npmjs.com/package/mysql2
 3. Inquirer.js [Version 8.2.4](https://www.npmjs.com/package/inquirer/v/8.2.4)
+4. Splash Screen [Version 0.2.7] https://www.npmjs.com/package/asciiart-logo
 
 ## What I Learned
 - To build a Node.js command-line application that takes in user input to create a database to add and view employees and assign ids, roles, salaries, departments, managers, and department utilized budget. The application prompts the user to select an employee or department, a function to be completed i.e. add, remove, or update , and saves the database in a table format. 
