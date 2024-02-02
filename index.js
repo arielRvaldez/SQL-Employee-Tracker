@@ -133,7 +133,7 @@ function loadMainPrompts() {
 init();
 // View all employees
 function viewEmployees() {
-  db.viewAllEmployees()
+  db.viewEmployees()
     .then(([rows]) => {
       let employees = rows;
       console.log("\n");
