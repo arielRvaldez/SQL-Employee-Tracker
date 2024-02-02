@@ -1,3 +1,5 @@
+USE employees_db;
+
 INSERT INTO department (department_name, id)
 VALUES ('Sales', 001), 
        ('Engineering', 002), 
@@ -6,7 +8,7 @@ VALUES ('Sales', 001),
        ('Marketing', 005), 
        ('Human Resources', 006);
 
-INSERT INTO role (id, title, salary, department_id)    
+INSERT IGNORE INTO role (id, title, salary, department_id)    
 VALUES (1, 'Sales Lead', 100000, 001), 
        (2, 'Salesperson', 80000, 001), 
        (3, 'Lead Engineer', 150000, 002), 
@@ -20,14 +22,13 @@ VALUES (1, 'Sales Lead', 100000, 001),
        (11, 'HR Assistant', 80000, 005);
 
 INSERT INTO employee (id, first_name, last_name, role_id, manager_id) 
-VALUES ('John', 'Doe', 1, NULL), 
-       ('Mike', 'Chan', 2, 1), 
-       ('Ashley', 'Rodriguez', 3, 1), 
-       ('Kevin', 'Tupik', 4, 3), 
-       ('Kunal', 'Singh', 5, 3), 
-       ('Malia', 'Brown', 6, 1), 
-       ('Sarah', 'Lourd', 7, 6), 
-       ('Tom', 'Allen', 8, 6), 
-       ('Troy', 'McDonald', 9, 6), 
-       ('Beth', 'Jenkins', 10, 6);
-```  
+VALUES (0001, 'John', 'Doe', 1, NULL), 
+       (0002, 'Mike', 'Chan', 2, 1), 
+       (0003, 'Ashley', 'Rodriguez', 3, 1), 
+       (0004, 'Kevin', 'Tupik', 4, 3), 
+       (0005, 'Kunal', 'Singh', 5, 3), 
+       (0006, 'Malia', 'Brown', 6, 1), 
+       (0007, 'Sarah', 'Lourd', 7, 6), 
+       (0008, 'Tom', 'Allen', 8, 6), 
+       (0009, 'Troy', 'McDonald', 9, 6), 
+       (0010, 'Beth', 'Jenkins', 10, 6);
