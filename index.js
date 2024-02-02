@@ -133,7 +133,7 @@ function loadMainPrompts() {
 init();
 // View all employees
 function viewEmployees() {
-  db.findAllEmployees()
+  db.viewAllEmployees()
     .then(([rows]) => {
       let employees = rows;
       console.log("\n");
@@ -387,7 +387,7 @@ function addDepartment() {
   ])
     .then(res => {
       let name = res;
-      db.createDepartment(name)
+      db.addDepartment(name)
         .then(() => console.log(`Added ${name.name} to the database`))
         .then(() => loadMainPrompts())
     })

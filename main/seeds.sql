@@ -1,12 +1,12 @@
 USE employees_db;
 
-INSERT INTO department (department_name, id)
-VALUES ('Sales', 001), 
-       ('Engineering', 002), 
-       ('Finance', 003), 
-       ('Legal', 004), 
-       ('Marketing', 005), 
-       ('Human Resources', 006);
+INSERT INTO department (department_name, id, budget)
+VALUES ('Sales', 001, 100000), 
+       ('Engineering', 002, 200000), 
+       ('Finance', 003, 30000), 
+       ('Legal', 004, 400000), 
+       ('Marketing', 005, 500000), 
+       ('Human Resources', 006, 600000);
 
 INSERT IGNORE INTO role (id, title, salary, department_id)    
 VALUES (1, 'Sales Lead', 100000, 001), 
