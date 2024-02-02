@@ -1,110 +1,86 @@
 const express = require('express');
-// Import and require mysql2
 const mysql = require('mysql2');
 const inquirer = require('inquirer');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
 
-// Express middleware
+// middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-// Connect to database
-const db = mysql.createConnection(
-  {
-    host: 'localhost',
-    // MySQL username,
-    user: 'root',
-    password: 'Ariel8290',
-    database: 'employees_db'
-  },
-  console.log(`Connected to the Employee database.`)
-);
+const db = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',   
+  password: 'Ariel8290',
+  database: 'employees_db'
+})
 
-// enter an employee
-app.post('/api/new-employee', ({ body }, res) => {
-  const sql = `INSERT INTO employees (employee_name)
-    VALUES (?)`;
-  const params = [body.employee_name];
-  
-  db.query(sql, params, (err, result) => {
-    if (err) {
-      res.status(400).json({ error: err.message });
-      return;
-    }
-    res.json({
-      message: 'success',
-      data: body
-    });
-  });
-});
+db.connect(err => {
+  if (err) {throw err}
+  console.log('Connected to the Employee database.')
+})
 
-// view all employees
+app.get('/create-employee', (req, res) => {
+  let sql = 'CREATE DATABASE employees_db';
+  db.query(sql, err => {
+      if (err) {throw err}
+      res.send('Database created...')
+  })
+})
+
+//create table
+app.get('/create-table', (req, res) => {
+  let sql = 'CREATE TABLE employees (id INT AUTO_INCREMENT, employee_name VARCHAR(50), department VARCHAR (255), PRIMARY KEY (id))';
+  db.query(sql, err => {
+      if (err) {throw err}
+      res.send('Employees table created...')
+  })
+})
+
+//insert employee 
+app.get('/employee1', (req, res) => {
+  let post = {employee_name: 'John Doe', department: 'Marketing'}
+  let sql = 'INSERT INTO employees SET ?';
+  let query = db.query(sql, post, err => {
+      if (err) {throw err}
+      res.send('Employee added...')
+  })
+})
+
+//select employees
 app.get('/api/employees', (req, res) => {
-  const sql = `SELECT id, employee_name AS title FROM employees`;
-  
-  db.query(sql, (err, rows) => {
-    if (err) {
-      res.status(500).json({ error: err.message });
-       return;
-    }
-    res.json({
-      message: 'success',
-      data: rows
-    });
-  });
-});
+  let sql = 'SELECT * FROM employees';
+  let query = db.query(sql, (err, results) => {
+      if (err) {throw err}
+      console.log(results)
+      res.send('Employees fetched...')
+  })
+})
 
-// Delete an employee
-app.delete('/api/employees/:id', (req, res) => {
-  const sql = `DELETE FROM employees WHERE id = ?`;
-  const params = [req.params.id];
-  
-  db.query(sql, params, (err, result) => {
-    if (err) {
-      res.statusMessage(400).json({ error: res.message });
-    } else if (!result.affectedRows) {
-      res.json({
-      message: 'Employee not found'
-      });
-    } else {
-      res.json({
-        message: 'deleted',
-        changes: result.affectedRows,
-        id: req.params.id
-      });
-    }
-  });
-});
+//update employee
+app.put('/api/employee/:id', (req, res) => {
+  let newName = 'Updated Name';
+  let sql = `UPDATE employees SET employee_name = '${newName}' WHERE id = ${req.params.id}`;
+  let query = db.query(sql, err => {
+      if (err) {throw err}
+      res.send('Employee updated...')
+  })
+})
 
-// update employee
-app.put('/api/employees/:id', (req, res) => {
-  const sql = `UPDATE employee SET employee = ? WHERE id = ?`;
-  const params = [req.body.employee, req.params.id];
+//delete employee
+app.delete('/api/employee/:id', (req, res) => {
+  let sql = `DELETE FROM employees WHERE id = ${req.params.id}`;
+  let query = db.query(sql, err => {
+      if (err) {throw err}
+      res.send('Employee deleted...')
+  })
+})
 
-  db.query(sql, params, (err, result) => {
-    if (err) {
-      res.status(400).json({ error: err.message });
-    } else if (!result.affectedRows) {
-      res.json({
-        message: 'Employee not found'
-      });
-    } else {
-      res.json({
-        message: 'success',
-        data: req.body,
-        changes: result.affectedRows
-      });
-    }
-  });
-});
-
-// Default response for any other request (Not Found)
 app.use((req, res) => {
   res.status(404).end();
 });
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+app.listen('3001', () => {
+  console.log('Server started on port 3001')
+})
