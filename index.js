@@ -133,7 +133,7 @@ function loadMainPrompts() {
 init();
 // View all employees
 function viewEmployees() {
-  db.viewEmployees()
+  db.findAllEmployees()
     .then(([rows]) => {
       let employees = rows;
       console.log("\n");
@@ -153,7 +153,7 @@ function viewEmployeesByDepartment() {
       prompt([
         {
           type: "list",
-          name: "departmentId",
+          name: "department_name",
           message: "What department do you want to view employees for?",
           choices: departmentChoices
         }
