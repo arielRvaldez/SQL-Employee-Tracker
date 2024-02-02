@@ -1,6 +1,6 @@
 const { prompt } = require("inquirer");
 const logo = require("asciiart-logo");
-const db = require("./main/db");
+const db = require("./db");
 
 // Display logo text, load main prompts
 function init() {
