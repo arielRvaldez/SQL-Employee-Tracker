@@ -111,14 +111,33 @@ class DB {
     );
   }
   // db connection
-  findAllEmployees(employee_name) {
+  findAllEmployees() {
     return this.connection.query(
       "SELECT employee.id, employee.first_name, employee.last_name, role.title, department.name AS department, role.salary, CONCAT(manager.first_name, ' ', manager.last_name) AS manager FROM employee LEFT JOIN role on employee.role_id = role.id LEFT JOIN department on role.department_id = department.id LEFT JOIN employee manager on manager.id = employee.manager_id;"
     );
   }
 
+  findAllDepartments() {
+    return this.connection.query(
+      "SELECT department.id, department.name FROM department;"
+    );
+  }
 
-  //Eric add end
+  findAllRoles() {
+    return this.connection.query(
+      "SELECT role.id, role.title, department.name AS department, role.salary FROM role LEFT JOIN department on role.department_id = department.id;"
+    );
+  }
+
+  viewDepartmentBudgets() {
+    return this.connection.query(
+      "SELECT department.name AS department, SUM(role.salary) AS utilized_budget FROM employee LEFT JOIN role on employee.role_id = role.id LEFT JOIN department on role.department_id = department.id GROUP BY department.name;"
+    );
+  }
+
+  createRole() {
+    return this.connection.query("INSERT INTO role SET ?", role);
+  }  
 }
 module.exports = new DB(connection);
 
