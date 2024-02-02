@@ -1,6 +1,7 @@
 const express = require('express');
 // Import and require mysql2
 const mysql = require('mysql2');
+const inquirer = require('inquirer');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -12,7 +13,7 @@ app.use(express.json());
 // Connect to database
 const db = mysql.createConnection(
   {
-    host: 'black',
+    host: 'localhost',
     // MySQL username,
     user: 'root',
     password: 'Ariel8290',
@@ -21,7 +22,7 @@ const db = mysql.createConnection(
   console.log(`Connected to the Employee database.`)
 );
 
-// Create a movie
+// enter an employee
 app.post('/api/new-employee', ({ body }, res) => {
   const sql = `INSERT INTO employees (employee_name)
     VALUES (?)`;
@@ -39,7 +40,7 @@ app.post('/api/new-employee', ({ body }, res) => {
   });
 });
 
-// Read all movies
+// view all employees
 app.get('/api/employees', (req, res) => {
   const sql = `SELECT id, employee_name AS title FROM employees`;
   
@@ -55,8 +56,8 @@ app.get('/api/employees', (req, res) => {
   });
 });
 
-// Delete a movie
-app.delete('/api/employee/:id', (req, res) => {
+// Delete an employee
+app.delete('/api/employees/:id', (req, res) => {
   const sql = `DELETE FROM employees WHERE id = ?`;
   const params = [req.params.id];
   
@@ -77,8 +78,8 @@ app.delete('/api/employee/:id', (req, res) => {
   });
 });
 
-// BONUS: Update review name
-app.put('/api/employee/:id', (req, res) => {
+// update employee
+app.put('/api/employees/:id', (req, res) => {
   const sql = `UPDATE employee SET employee = ? WHERE id = ?`;
   const params = [req.body.employee, req.params.id];
 
