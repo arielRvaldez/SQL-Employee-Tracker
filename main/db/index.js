@@ -119,7 +119,7 @@ class DB {
 
   findAllDepartments() {
     return this.connection.query(
-      "SELECT department.id, department.name FROM department;"
+      "SELECT department.id, department_name FROM department;"
     );
   }
 
