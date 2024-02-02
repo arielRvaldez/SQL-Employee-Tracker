@@ -1,7 +1,7 @@
 const { prompt } = require("inquirer");
 const logo = require("asciiart-logo");
 const db = require("./main/db");
-init();
+
 // Display logo text, load main prompts
 function init() {
   const logoText = logo({ name: "Employee Manager" }).render();
@@ -126,10 +126,11 @@ function loadMainPrompts() {
         break;
       default:
         quit();
-    }
-  }
-  )
+    }}).catch(err => {
+      console.error("Error during prompt: ", err);
+  });
 }
+init();
 // View all employees
 function viewEmployees() {
   db.findAllEmployees()
