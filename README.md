@@ -41,3 +41,4 @@ Here is my <a href="https://github.com/arielRvaldez/SQL-Employee-Tracker.git" ta
 - NPM References https://www.npmjs.com/package/promise-mysql
 - Youtube https://www.youtube.com/watch?v=boaSDVO-5wQ
 - Calendy Tutor
+- MySQL Reference https://dev.mysql.com/doc/refman/8.0/en/insert.html
