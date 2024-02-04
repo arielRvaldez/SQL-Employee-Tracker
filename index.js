@@ -388,7 +388,7 @@ function addDepartment() {
     .then(res => {
       let department_name = res.department_name;
       db.findAllDepartments()
-        .thn(([rows]) => {
+        .then(([rows]) => {
           let departments = rows;
           const managerChoices = departments.map(({ id, name }) => ({
             name: name,
