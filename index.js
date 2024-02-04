@@ -381,17 +381,37 @@ function viewDepartments() {
 function addDepartment() {
   prompt([
     {
-      name: "name",
+      name: "department_name",
       message: "What is the name of the department?"
     }
   ])
     .then(res => {
-      let name = res;
-      db.addDepartment(department_name)
-        .then(() => console.log(`Added ${name.name} to the database`))
-        .then(() => loadMainPrompts())
-    })
-}
+      let department_name = res.department_name;
+      db.findAllDepartments()
+        .thn(([rows]) => {
+          let departments = rows;
+          const managerChoices = departments.map(({ id, name }) => ({
+            name: name,
+            value: id
+          }));
+          managerChoices.unshift({ name: "None", value: null });
+          prompt({
+            type: "list",
+            name: 'managerId',
+            message: "Who is the department manager?",
+            choices: managerChoices
+          })
+          .then(res => {
+            let department = {
+            manager_id: res.managerId
+          }
+            db.addDepartment(department);
+          })
+          .then(() => console.log(`Added ${department_name} to the database`))
+          })
+            .then(() => loadMainPrompts())
+        })
+  }
 // remove a department
 function removeDepartment() {
   db.findAllDepartments()
