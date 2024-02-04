@@ -474,7 +474,7 @@ function addEmployee() {
                         first_name: firstName,
                         last_name: lastName
                       }
-                      db.createEmployee(employee);
+                      db.addEmployee(employee);
                     })
                     .then(() => console.log(
                       `Added ${firstName} ${lastName} to the database`
