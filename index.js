@@ -184,7 +184,7 @@ function viewEmployeesByManager() {
             choices: managerChoices
         }
     ])
-        .then(res => db.findAllEmployeesByManager(res.managerId))
+        .then(res => db.viewEmployeesByManager(res.managerId))
         .then(([rows]) => {
           let employees = rows;
           console.log("\n");
