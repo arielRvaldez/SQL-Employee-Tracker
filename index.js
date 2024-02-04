@@ -338,7 +338,7 @@ function addRole() {
         }
       ])
         .then(role => {
-          db.createRole(role)
+          db.addRole(role)
             .then(() => console.log(`Added ${role.title} to the database`))
             .then(() => loadMainPrompts())
         })
