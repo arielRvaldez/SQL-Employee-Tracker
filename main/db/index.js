@@ -107,7 +107,7 @@ class DB {
   // find employees by manager, with departments and roles titles
   viewEmployeesByManager(managerId) {
     return this.connection.query(
-      "SELECT employee.id, employee.first_name, employee.last_name, department_name AS department, role.title FROM employee LEFT JOIN role on role.id = employee.role_id LEFT JOIN department ON department.id = role.department_id WHERE manager_id = ?;",
+      "SELECT employee.id, employee.first_name, employee.last_name, department_name AS department, role.title FROM employee LEFT JOIN role on role.id = employee.role_id LEFT JOIN department ON department.id = role.department_name WHERE manager_id = ?;",
       managerId
     );
   }
