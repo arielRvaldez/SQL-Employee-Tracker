@@ -62,7 +62,7 @@ class DB {
   // find all roles with the departments
   viewRoles() {
     return this.connection.query(
-      "SELECT role.id, role.title, department.name AS department, role.salary FROM role LEFT JOIN department on role.department_id = department.id;"
+      "SELECT * FROM role;"
     );
   }
   // create new role
@@ -76,7 +76,8 @@ class DB {
   // list all departments
   viewDepartments() {
     return this.connection.query(
-      "SELECT department.id, department.name FROM department;"
+      "SELECT * FROM department;"
+      // "SELECT department.id, department.name FROM department;"
     );
   }
   // list departments with employees, their roles, and utilized department budget
@@ -113,19 +114,22 @@ class DB {
   // db connection
   findAllEmployees() {
     return this.connection.query(
-      "SELECT employee.id, employee.first_name, employee.last_name, role.title, department.name AS department, role.salary, CONCAT(manager.first_name, ' ', manager.last_name) AS manager FROM employee LEFT JOIN role on employee.role_id = role.id LEFT JOIN department on role.department_id = department.id LEFT JOIN employee manager on manager.id = employee.manager_id;"
+      "SELECT * FROM employee;"
+      // "SELECT employee.id, employee.first_name, employee.last_name, role.title, department.name AS department, role.salary, CONCAT(manager.first_name, ' ', manager.last_name) AS manager FROM employee LEFT JOIN role on employee.role_id = role.id LEFT JOIN department on role.department_id = department.id LEFT JOIN employee manager on manager.id = employee.manager_id;"
     );
   }
 
   findAllDepartments() {
     return this.connection.query(
-      "SELECT department.id, department_name FROM department;"
+      "SELECT * FROM department;"
+      // "SELECT department.id, department_name FROM department;"
     );
   }
 
   findAllRoles() {
     return this.connection.query(
-      "SELECT role.id, role.title, department.name AS department, role.salary FROM role LEFT JOIN department on role.department_id = department.id;"
+      "SELECT * FROM role;"
+      // "SELECT role.id, role.title, department.name AS department, role.salary FROM role LEFT JOIN department on role.department_id = department.id;"
     );
   }
 
@@ -135,9 +139,9 @@ class DB {
     );
   }
 
-  createRole() {
-    return this.connection.query("INSERT INTO role SET ?", role);
-  }  
+  // createRole() {
+  //   return this.connection.query("INSERT INTO role SET ?", role);
+  // }  
 }
 module.exports = new DB(connection);
 

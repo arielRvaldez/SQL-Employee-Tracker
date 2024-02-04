@@ -158,7 +158,7 @@ function viewEmployeesByDepartment() {
           choices: departmentChoices
         }
       ])
-        .then(res => db.findAllEmployeesByDepartment(res.departmentId))
+        .then(res => db.viewEmployeesByDepartment(res.departmentId))
         .then(([rows]) => {
           let employees = rows;
           console.log("\n");
