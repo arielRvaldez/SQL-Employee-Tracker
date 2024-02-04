@@ -382,7 +382,7 @@ function addDepartment() {
   prompt([
     {
       name: "department_name",
-      message: "What is the name of the department?"
+      message: "What is the name of the new department?"
     }
   ])
     .then(res => {
@@ -397,13 +397,14 @@ function addDepartment() {
           managerChoices.unshift({ name: "None", value: null });
           prompt({
             type: "list",
-            name: 'managerId',
+            name: 'manager_name',
             message: "Who is the department manager?",
             choices: managerChoices
           })
           .then(res => {
             let department = {
-            manager_id: res.managerId
+            department_name: department_name,
+            manager_name: res.manager_name
           }
             db.addDepartment(department);
           })
