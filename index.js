@@ -405,8 +405,8 @@ function addDepartment() {
           .then(res => {
             let department = {
             department_name: res.department_name,
-            // first_name: firstName,
-            // last_name: lastName
+             first_name: firstName, //ERIC ADDED
+             last_name: lastName  //ERIC ADDED
           }
             db.addDepartment(department);
           })
