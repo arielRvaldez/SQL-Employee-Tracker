@@ -386,34 +386,13 @@ function addDepartment() {
     }
   ])
     .then(res => {
-      let department_name = res.department_name})
+      let department_name = res.department_name;
 
-      db.addDepartment(res.department_name)
+      db.addDepartment(department_name);
+    })  
     .then(() => console.log(`Added ${department_name} to the database`))
     .then(() => loadMainPrompts())
-    }     
-
-// remove a department
-function removeDepartment() {
-  db.findAllDepartments()
-    .then(([rows]) => {
-      let departments = rows;
-      const departmentChoices = departments.map(({ id, name }) => ({
-        name: name,
-        value: id
-      }));
-      prompt({
-        type: "list",
-        name: "departmentId",
-        message:
-          "Which department would you like to remove? (Note: This will also remove the employees in selected department.)",
-        choices: departmentChoices
-      })
-        .then(res => db.removeDepartment(res.departmentId))
-        .then(() => console.log(`Removed department from the database`))
-        .then(() => loadMainPrompts())
-    });
-}
+}     
 // view departments and their total utilized department budget
 function viewUtilizedBudgetByDepartment() {
   db.viewDepartmentBudgets()
