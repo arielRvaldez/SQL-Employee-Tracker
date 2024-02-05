@@ -401,7 +401,7 @@ function removeDepartment() {
     .then(([rows]) => {
       let departments = rows;
       const departmentChoices = departments.map(({ id, name }) => ({
-        name: department_name,
+        name: name,
         value: id
       }));
       prompt([
