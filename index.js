@@ -163,13 +163,29 @@ function viewEmployeesByDepartment() {
                 
                 db.viewEmployeesByDepartment(department_id);
               })
-              .then(([rows]) => {
-                let employees = rows;
-                console.log("\n");
-                console.table(employees);
+              .then(result => {
+                if (result[0] === undefined) {
+                  console.log("The selected department has no employees.");
+                } else {
+                  let employees = result[0];
+                  console.log("\n");
+                  console.table(employees);
+                }
               })
               .then(() => loadMainPrompts())
-          }); 
+              .catch(err => {
+                console.error(err("Errot durign View Employees by Department: ", err));
+                loadMainPrompts();
+              });
+            });
+          } 
+          //     .then(([rows]) => {
+          //       let employees = rows;
+          //       console.log("\n");
+          //       console.table(employees);
+          //     })
+          //     .then(() => loadMainPrompts())
+          // }); 
       // View all employees by manager
       function viewEmployeesByManager() {
         db.findAllEmployees()
