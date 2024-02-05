@@ -173,10 +173,6 @@ function viewEmployeesByDepartment() {
                 }
               })
               .then(() => loadMainPrompts())
-              .catch(err => {
-                console.error(err("Errot durign View Employees by Department: ", err));
-                loadMainPrompts();
-              });
             });
           } 
           //     .then(([rows]) => {
