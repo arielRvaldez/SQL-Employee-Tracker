@@ -158,19 +158,18 @@ function viewEmployeesByDepartment() {
           choices: departmentChoices
         }
       ])
-        .then(res => {
+        .then(res => 
           let department_id = res.department_id;
           
-          db.viewEmployeesByDepartment(res.department_id);
+          db.viewEmployeesByDepartment(department_id);
         })
         .then(([rows]) => {
           let employees = rows;
           console.log("\n");
           console.table(employees);
         })
-        .then(() => loadMainPrompts());
-    });
-}
+        .then(() => loadMainPrompts())
+    };
 // View all employees by manager
 function viewEmployeesByManager() {
   db.findAllEmployees()
