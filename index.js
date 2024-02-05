@@ -397,24 +397,28 @@ function addDepartment() {
           managerChoices.unshift({ name: "None", value: null });
           prompt({
             type: "list",
-            name: 'manager_name',
+            name: 'managerId',
             message: "Who is the department manager?",
             choices: managerChoices
           })
-          // .then(res => {
-          //   let department = {
-          //    department_name: res.department_name,
-          //    first_name: firstName,
-          //    last_name: lastName  
-          // }
-          // })
-          .then(res => db.addDepartment(res.department_name, res.manager_name))
+          .then(res => {
+            let department = {
+             department_name: department_name,
+             manager_id: res.managerId 
+          };
+        
+          return db.addDepartment(department)
+        })
           .then(() => console.log(
             `Added ${department_name} to the database`))
-          })
-          .then(() => loadMainPrompts())
+          loadMainPrompts();
         })
-  }
+    })
+    .catch(err => {
+      console.error("Error adding department: ", err);
+      loadMainPrompts();
+    });
+}
 // remove a department
 function removeDepartment() {
   db.findAllDepartments()
