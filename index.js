@@ -388,7 +388,7 @@ function addDepartment() {
     .then(res => {
       let department_name = res.department_name;
 
-      db.addDepartment(department_name);
+      db.addDepartment(addDepartment);
     })  
     .then(() => console.log(`Added department to the database`))
     .then(() => loadMainPrompts())
