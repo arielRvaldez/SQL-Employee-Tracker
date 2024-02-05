@@ -401,6 +401,7 @@ function addDepartment() {
             message: "Who is the department manager?",
             choices: managerChoices
           })
+        })
           .then(res => {
             let department = {
              department_name: department_name,
@@ -409,11 +410,11 @@ function addDepartment() {
         
           return db.addDepartment(department)
         })
-          .then(() => console.log(
-            `Added ${department_name} to the database`))
+          .then(() => { console.log(
+            `Added ${department_name} to the database`)
           loadMainPrompts();
-        })
-    })
+        });
+      })
     .catch(err => {
       console.error("Error adding department: ", err);
       loadMainPrompts();
@@ -438,7 +439,7 @@ function removeDepartment() {
         .then(res => db.removeDepartment(res.departmentId))
         .then(() => console.log(`Removed department from the database`))
         .then(() => loadMainPrompts())
-    })
+    });
 }
 // view departments and their total utilized department budget
 function viewUtilizedBudgetByDepartment() {
