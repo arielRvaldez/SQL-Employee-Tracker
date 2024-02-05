@@ -390,7 +390,7 @@ function addDepartment() {
 
       db.addDepartment(department_name);
     })  
-    .then(() => console.log(`Added ${department_name} to the database`))
+    .then(() => console.log(`Added department to the database`))
     .then(() => loadMainPrompts())
 }     
 // view departments and their total utilized department budget
