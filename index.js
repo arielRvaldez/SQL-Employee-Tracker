@@ -385,7 +385,10 @@ function addDepartment() {
       message: "What is the name of the new department?"
     }
   ])
-    .then(res => db.addDepartment(res.department_name))
+    .then(res => {
+      let department_name = res.department_name})
+
+      db.addDepartment(res.department_name)
     .then(() => console.log(`Added ${department_name} to the database`))
     .then(() => loadMainPrompts())
     }     
