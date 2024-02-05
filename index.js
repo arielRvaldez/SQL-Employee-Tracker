@@ -408,7 +408,7 @@ function addDepartment() {
       //        managerId: res.managerId 
       //     };
         
-          return db.addDepartment(department)
+          return db.addDepartment(addDepartment)
         })
           .then(() => { console.log(
             `Added ${department_name} to the database`)
