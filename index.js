@@ -170,7 +170,6 @@ function viewEmployeesByDepartment() {
         .then(() => loadMainPrompts());
     });
 }
-              
       // View all employees by manager
       function viewEmployeesByManager() {
         db.findAllEmployees()
