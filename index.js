@@ -407,23 +407,23 @@ function removeDepartment() {
       prompt([
         {
           type: "list",
-          name: "department_name",
+          name: "departmentId",
           message:
             "Which department would you like to remove? Note: This will also remove any associated roles and employees.",
           choices: departmentChoices
         }
       ])
       .then(res => {
-        let department_name = res.department_name;
+        let departmentId = res.departmentId;
   
-        let department = { department_name: department_name };
+        let department = { departmentId: departmentId };
   
         db.removeDepartment(department);
       })  
         .then(() => console.log("Removed department from the database"))
         .then(() => loadMainPrompts())
     })
-}    
+}   
 // view departments and their total utilized department budget
 function viewUtilizedBudgetByDepartment() {
   db.viewDepartmentBudgets()
