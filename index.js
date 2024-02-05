@@ -387,26 +387,26 @@ function addDepartment() {
   ])
     .then(res => {
       let department_name = res.department_name;
-      db.findAllEmployees()
-        .then(([rows]) => {
-          let employees = rows;
-          const managerChoices = employees.map(({ id, first_name, last_name }) => ({
-            name: `${first_name} ${last_name}`,
-            value: id
-          }));
-          managerChoices.unshift({ name: "None", value: null });
-          prompt({
-            type: "list",
-            name: 'managerId',
-            message: "Who is the department manager?",
-            choices: managerChoices
-          })
-        })
-          .then(res => {
-            let department = {
-             department_name: department_name,
-             manager_id: res.managerId 
-          };
+      // db.findAllEmployees()
+      //   .then(([rows]) => {
+      //     let employees = rows;
+      //     const managerChoices = employees.map(({ id, first_name, last_name }) => ({
+      //       name: `${first_name} ${last_name}`,
+      //       value: id
+      //     }));
+      //     managerChoices.unshift({ name: "None", value: null });
+      //     prompt({
+      //       type: "list",
+      //       name: 'managerId',
+      //       message: "Who is the department manager?",
+      //       choices: managerChoices
+      //     })
+      //   })
+      //     .then(res => {
+      //       let department = {
+      //        department_name: department_name,
+      //        managerId: res.managerId 
+      //     };
         
           return db.addDepartment(department)
         })
@@ -414,12 +414,12 @@ function addDepartment() {
             `Added ${department_name} to the database`)
           loadMainPrompts();
         });
-      })
-    .catch(err => {
-      console.error("Error adding department: ", err);
-      loadMainPrompts();
-    });
-}
+//       })
+//     .catch(err => {
+//       console.error("Error adding department: ", err);
+//       loadMainPrompts();
+//     });
+// }
 // remove a department
 function removeDepartment() {
   db.findAllDepartments()
