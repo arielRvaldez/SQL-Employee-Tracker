@@ -391,7 +391,7 @@ function addDepartment() {
       db.findAllEmployees()
         .then(([rows]) => {
           let employees = rows;
-          const managerChoices = departments.map(({ id, first_name, last_name }) => ({
+          const managerChoices = employees.map(({ id, first_name, last_name }) => ({
             name: `${first_name} ${last_name}`,
             value: id
           }));
