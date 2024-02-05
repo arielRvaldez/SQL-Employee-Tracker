@@ -407,18 +407,18 @@ function removeDepartment() {
       prompt([
         {
           type: "list",
-          name: "departmentId",
+          name: "department_id",
           message:
             "Which department would you like to remove? Note: This will also remove any associated roles and employees.",
           choices: departmentChoices
         }
       ])
       .then(res => {
-        let departmentId = res.departmentId;
+        let department_id = res.departmentId;
   
-        let department = { departmentId: departmentId };
+        let department = { department_id: department_id };
   
-        db.removeDepartment(department);
+        db.removeDepartment(department_id);
       })  
         .then(() => console.log("Removed department from the database"))
         .then(() => loadMainPrompts())

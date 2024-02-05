@@ -92,8 +92,7 @@ class DB {
   }
   // remove department with id
   removeDepartment(department_id) {
-    return this.connection.query(
-      "DELETE FROM department WHERE id = ?",
+    return this.connection.query("DELETE FROM department WHERE id = ?",
       department_id);
   }
   // find employees by department with role titles
