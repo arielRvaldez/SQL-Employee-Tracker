@@ -91,10 +91,10 @@ class DB {
     return this.connection.query("INSERT INTO department SET ?", department);
   }
   // remove department with id
-  removeDepartment(departmentId) {
+  removeDepartment(department) {
     return this.connection.query(
-      "DELETE FROM department WHERE id = ?",
-      departmentId
+      "DELETE FROM department WHERE name = ?",
+      department_name
     );
   }
   // find employees by department with role titles
