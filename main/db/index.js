@@ -87,8 +87,8 @@ class DB {
     );
   }
   // create new department
-  addDepartment(department) {
-    return this.connection.query("INSERT INTO department SET ?", department);
+  addDepartment(department_name) {
+    return this.connection.query("INSERT INTO department SET ?", department_name);
   }
   // remove department with id
   removeDepartment(departmentId) {
