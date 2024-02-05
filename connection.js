@@ -16,6 +16,10 @@ const db = mysql.createConnection({
   database: 'employees_db'
 })
 
+db.query('SELECT * FROM employees', function (err, results) {
+  console.log(results);
+});
+
 db.connect(err => {
   if (err) {throw err}
   console.log('Connected to the Employee database.')
@@ -58,28 +62,10 @@ app.get('/api/employees', (req, res) => {
   })
 })
 
-//update employee
-app.put('/api/employee/:id', (req, res) => {
-  let newName = 'Updated Name';
-  let sql = `UPDATE employees SET employee_name = '${newName}' WHERE id = ${req.params.id}`;
-  let query = db.query(sql, err => {
-      if (err) {throw err}
-      res.send('Employee updated...')
-  })
-})
-
-//delete employee
-app.delete('/api/employee/:id', (req, res) => {
-  let sql = `DELETE FROM employees WHERE id = ${req.params.id}`;
-  let query = db.query(sql, err => {
-      if (err) {throw err}
-      res.send('Employee deleted...')
-  })
-})
-
+//select employees by department  
 app.use((req, res) => {
   res.status(404).end();
-});
+}); 
 
 app.listen('3001', () => {
   console.log('Server started on port 3001')
