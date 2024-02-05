@@ -150,56 +150,56 @@ function viewEmployeesByDepartment() {
         name: name,
         value: id
       }));
-      prompt([
-        {
-          type: "list",
-          name: "department_id",
-          message: "What department do you want to view employees for?",
-          choices: departmentChoices
-        }
-      ])
-        .then(res => {
-          let department_id = res.department_id;
-          
-          db.viewEmployeesByDepartment(department_id);
-        })
-        .then(([rows]) => {
-          let employees = rows;
-          console.log("\n");
-          console.table(employees);
-        })
-        .then(() => loadMainPrompts())
-    };
-// View all employees by manager
-function viewEmployeesByManager() {
-  db.findAllEmployees()
-    .then(([rows]) => {
-      let managers = rows;
-      const managerChoices = managers.map(({ id, first_name, last_name }) => ({
-        name: `${first_name} ${last_name}`,
-        value: id
-      }));
-    prompt([
-        {
-            type: "list",
-            name: "managerId",
-            message: "Select employee to see their manager.",
-            choices: managerChoices
-        }
-    ])
-        .then(res => db.viewEmployeesByManager(res.managerId))
-        .then(([rows]) => {
-          let employees = rows;
-          console.log("\n");
-          if (employees.length === 0) {
-            console.log("The selected employee is a manager.");
-          } else {
-            console.table(employees);
-          }
-        })
-        .then(() => loadMainPrompts())
-    });
-}
+            prompt([
+              {
+                type: "list",
+                name: "department_id",
+                message: "What department do you want to view employees for?",
+                choices: departmentChoices
+              }
+            ])
+              .then(res => {
+                let department_id = res.department_id;
+                
+                db.viewEmployeesByDepartment(department_id);
+              })
+              .then(([rows]) => {
+                let employees = rows;
+                console.log("\n");
+                console.table(employees);
+              })
+              .then(() => loadMainPrompts())
+          }); 
+      // View all employees by manager
+      function viewEmployeesByManager() {
+        db.findAllEmployees()
+          .then(([rows]) => {
+            let managers = rows;
+            const managerChoices = managers.map(({ id, first_name, last_name }) => ({
+              name: `${first_name} ${last_name}`,
+              value: id
+            }));
+          prompt([
+              {
+                  type: "list",
+                  name: "managerId",
+                  message: "Select employee to see their manager.",
+                  choices: managerChoices
+              }
+          ])
+              .then(res => db.viewEmployeesByManager(res.managerId))
+              .then(([rows]) => {
+                let employees = rows;
+                console.log("\n");
+                if (employees.length === 0) {
+                  console.log("The selected employee is a manager.");
+                } else {
+                  console.table(employees);
+                }
+              })
+              .then(() => loadMainPrompts())
+          });
+      }
 // delete employee
 function removeEmployee() {
   db.findAllEmployees()
