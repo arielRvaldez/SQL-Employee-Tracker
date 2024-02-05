@@ -387,11 +387,12 @@ function addDepartment() {
   ])
     .then(res => {
       let department_name = res.department_name;
-      db.findAllDepartments()
+
+      db.findAllEmployees()
         .then(([rows]) => {
-          let departments = rows;
-          const managerChoices = departments.map(({ id, name }) => ({
-            name: name,
+          let employees = rows;
+          const managerChoices = departments.map(({ id, first_name, last_name }) => ({
+            name: `${first_name} ${last_name}`,
             value: id
           }));
           managerChoices.unshift({ name: "None", value: null });
@@ -403,14 +404,16 @@ function addDepartment() {
           })
           .then(res => {
             let department = {
-            department_name: department_name,
-            manager_name: res.manager_name
+            department_name: res.department_name,
+            // first_name: firstName,
+            // last_name: lastName
           }
             db.addDepartment(department);
           })
-          .then(() => console.log(`Added ${department_name} to the database`))
+          .then(() => console.log(
+            `Added ${department_name} to the database`))
           })
-            .then(() => loadMainPrompts())
+          .then(() => loadMainPrompts())
         })
   }
 // remove a department
