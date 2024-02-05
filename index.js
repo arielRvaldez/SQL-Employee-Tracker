@@ -352,7 +352,7 @@ function removeRole() {
       const roleChoices = roles.map(({ id, title }) => ({
         name: title,
         value: id
-      }));
+      }))
       prompt([
         {
           type: "list",
@@ -416,7 +416,7 @@ function removeDepartment() {
       .then(res => {
         let department_id = res.departmentId;
   
-        let department = { department_id: department_id };
+        // let department = { department_id: department_id };
   
         db.removeDepartment(department_id);
       })  
