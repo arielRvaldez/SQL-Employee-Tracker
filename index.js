@@ -401,7 +401,7 @@ function removeDepartment() {
     .then(([rows]) => {
       let departments = rows;
       const departmentChoices = departments.map(({ id, name }) => ({
-        name: name,
+        name: department_name,
         value: id
       }));
       prompt([
@@ -413,7 +413,13 @@ function removeDepartment() {
           choices: departmentChoices
         }
       ])
-        .then(res => db.removeDepartment(res.department_name))
+      .then(res => {
+        let department_name = res.department_name;
+  
+        let department = { department_name: department_name };
+  
+        db.removeDepartment(department);
+      })  
         .then(() => console.log("Removed department from the database"))
         .then(() => loadMainPrompts())
     })
