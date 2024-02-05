@@ -414,7 +414,7 @@ function removeDepartment() {
         }
       ])
       .then(res => {
-        let department_id = res.departmentId;
+        let department_id = res.department_id;
   
         // let department = { department_id: department_id };
   
