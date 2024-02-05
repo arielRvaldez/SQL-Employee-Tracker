@@ -153,7 +153,7 @@ function viewEmployeesByDepartment() {
       prompt([
         {
           type: "list",
-          name: "department_name",
+          name: "department_id",
           message: "What department do you want to view employees for?",
           choices: departmentChoices
         }
@@ -415,8 +415,6 @@ function removeDepartment() {
       ])
       .then(res => {
         let department_id = res.department_id;
-  
-        // let department = { department_id: department_id };
   
         db.removeDepartment(department_id);
       })  
