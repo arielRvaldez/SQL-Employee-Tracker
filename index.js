@@ -385,41 +385,11 @@ function addDepartment() {
       message: "What is the name of the new department?"
     }
   ])
-    .then(res => {
-      let department_name = res.department_name;
-      // db.findAllEmployees()
-      //   .then(([rows]) => {
-      //     let employees = rows;
-      //     const managerChoices = employees.map(({ id, first_name, last_name }) => ({
-      //       name: `${first_name} ${last_name}`,
-      //       value: id
-      //     }));
-      //     managerChoices.unshift({ name: "None", value: null });
-      //     prompt({
-      //       type: "list",
-      //       name: 'managerId',
-      //       message: "Who is the department manager?",
-      //       choices: managerChoices
-      //     })
-      //   })
-      //     .then(res => {
-      //       let department = {
-      //        department_name: department_name,
-      //        managerId: res.managerId 
-      //     };
-        
-          return db.addDepartment(addDepartment)
-        })
-          .then(() => { console.log(
-            `Added ${department_name} to the database`)
-          loadMainPrompts();
-        });
-//       })
-//     .catch(err => {
-//       console.error("Error adding department: ", err);
-//       loadMainPrompts();
-//     });
-// }
+    .then(res => db.addDepartment(res.department_name))
+    .then(() => console.log(`Added ${department_name} to the database`))
+    .then(() => loadMainPrompts())
+    }     
+
 // remove a department
 function removeDepartment() {
   db.findAllDepartments()
@@ -517,4 +487,4 @@ function addEmployee() {
 function quit() {
   console.log("Goodbye!");
   process.exit();
-}}
+}
