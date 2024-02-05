@@ -21,14 +21,14 @@ VALUES (1, 'Sales Lead', 100000, 001),
        (10, 'HR Lead', 120000, 005), 
        (11, 'HR Assistant', 80000, 005);
 
-INSERT INTO employee (id, first_name, last_name, role_id, manager_id) 
-VALUES (0001, 'John', 'Doe', 1, NULL), 
-       (0002, 'Mike', 'Chan', 2, 1), 
-       (0003, 'Ashley', 'Rodriguez', 3, 1), 
-       (0004, 'Kevin', 'Tupik', 4, 3), 
-       (0005, 'Kunal', 'Singh', 5, 3), 
-       (0006, 'Malia', 'Brown', 6, 1), 
-       (0007, 'Sarah', 'Lourd', 7, 6), 
-       (0008, 'Tom', 'Allen', 8, 6), 
-       (0009, 'Troy', 'McDonald', 9, 6), 
-       (0010, 'Beth', 'Jenkins', 10, 6);
+INSERT INTO employee (id, first_name, last_name, department_name, role_id, manager_id) 
+VALUES (0001, 'John', 'Doe', Sales, 1, NULL), 
+       (0002, 'Mike', 'Chan', Sales, 2, 1), 
+       (0003, 'Ashley', 'Rodriguez', Finance, 3, 1), 
+       (0004, 'Kevin', 'Tupik', Finance, 4, 3), 
+       (0005, 'Kunal', 'Singh', Legal, 5, 3), 
+       (0006, 'Malia', 'Brown', Legal, 6, 1), 
+       (0007, 'Sarah', 'Lourd', Marketing, 7, 6), 
+       (0008, 'Tom', 'Allen', Marketing, 8, 6), 
+       (0009, 'Troy', 'McDonald', Human Resources, 9, 6), 
+       (0010, 'Beth', 'Jenkins', Human Resources, 10, 6);
