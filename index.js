@@ -401,14 +401,14 @@ function addDepartment() {
             message: "Who is the department manager?",
             choices: managerChoices
           })
-          .then(res => {
-            let department = {
-             department_name: res.department_name,
-             first_name: firstName,
-             last_name: lastName  
-          }
-            db.addDepartment(department);
-          })
+          // .then(res => {
+          //   let department = {
+          //    department_name: res.department_name,
+          //    first_name: firstName,
+          //    last_name: lastName  
+          // }
+          // })
+          .then(res => db.addDepartment(res.department_name, res.manager_name))
           .then(() => console.log(
             `Added ${department_name} to the database`))
           })
