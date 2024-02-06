@@ -147,13 +147,13 @@ function viewEmployeesByDepartment() {
     .then(([rows]) => {
       let department = rows;
       const departmentChoices = department.map(({ id, name }) => ({ 
-        name: name,
+        name: department.name,
         value: id}));
       
       prompt([
         {
           type: "list",
-          name: "department_id",
+          name: "department.id",
           message: "What department do you want to view employees for?",
           choices: departmentChoices
         }

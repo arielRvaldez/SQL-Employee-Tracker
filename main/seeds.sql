@@ -8,7 +8,7 @@ VALUES ('Sales', 001, 100000),
        ('Marketing', 005, 500000), 
        ('Human Resources', 006, 600000);
 
-INSERT IGNORE INTO role (id, title, salary, department_id)    
+INSERT INTO role (id, title, salary, department_id)    
 VALUES (1, 'Sales Lead', 100000, 001), 
        (2, 'Salesperson', 80000, 001), 
        (3, 'Lead Engineer', 150000, 002), 
