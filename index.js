@@ -145,11 +145,11 @@ function viewEmployees() {
 function viewEmployeesByDepartment() {
   db.findAllDepartments()
     .then(([rows]) => {
-      let departments = rows;
-      const departmentChoices = departments.map(({ id, name }) => ({
-        name: name,
-        value: id
-      }));
+      let department = rows;
+      const departmentChoices = department.map(({ id, name }) => ({ 
+        name: '${department}',
+        value: id}));
+      })
       prompt([
         {
           type: "list",
@@ -170,36 +170,37 @@ function viewEmployeesByDepartment() {
         .then(() => loadMainPrompts());
     });
 }
-      // View all employees by manager
-      function viewEmployeesByManager() {
-        db.findAllEmployees()
-          .then(([rows]) => {
-            let managers = rows;
-            const managerChoices = managers.map(({ id, first_name, last_name }) => ({
-              name: `${first_name} ${last_name}`,
-              value: id
-            }));
-          prompt([
-              {
-                  type: "list",
-                  name: "managerId",
-                  message: "Select employee to see their manager.",
-                  choices: managerChoices
-              }
-          ])
-              .then(res => db.viewEmployeesByManager(res.managerId))
-              .then(([rows]) => {
-                let employees = rows;
-                console.log("\n");
-                if (employees.length === 0) {
-                  console.log("The selected employee is a manager.");
-                } else {
-                  console.table(employees);
-                }
-              })
-              .then(() => loadMainPrompts())
-          });
-      }
+
+// View all employees by manager
+function viewEmployeesByManager() {
+  db.findAllEmployees()
+    .then(([rows]) => {
+      let managers = rows;
+      const managerChoices = managers.map(({ id, first_name, last_name }) => ({
+        name: `${first_name} ${last_name}`,
+        value: id
+      }));
+      prompt([
+        {
+          type: "list",
+          name: "managerId",
+          message: "Select employee to see their manager.",
+          choices: managerChoices
+        }
+      ])
+        .then(res => db.viewEmployeesByManager(res.managerId))
+        .then(([rows]) => {
+          let employees = rows;
+          console.log("\n");
+          if (employees.length === 0) {
+            console.log("The selected employee is a manager.");
+          } else {
+            console.table(employees);
+          }
+        })
+        .then(() => loadMainPrompts());
+    });
+}
 // delete employee
 function removeEmployee() {
   db.findAllEmployees()
