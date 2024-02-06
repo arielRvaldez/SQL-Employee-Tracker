@@ -149,7 +149,7 @@ function viewEmployeesByDepartment() {
       const departmentChoices = department.map(({ id, name }) => ({ 
         name: '${department}',
         value: id}));
-      })
+      
       prompt([
         {
           type: "list",
@@ -178,8 +178,8 @@ function viewEmployeesByManager() {
       let managers = rows;
       const managerChoices = managers.map(({ id, first_name, last_name }) => ({
         name: `${first_name} ${last_name}`,
-        value: id
-      }));
+        value: id));
+      });
       prompt([
         {
           type: "list",
