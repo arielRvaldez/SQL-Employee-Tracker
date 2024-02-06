@@ -178,8 +178,8 @@ function viewEmployeesByManager() {
       let managers = rows;
       const managerChoices = managers.map(({ id, first_name, last_name }) => ({
         name: `${first_name} ${last_name}`,
-        value: id));
-      });
+        value: id}));
+      
       prompt([
         {
           type: "list",
@@ -201,6 +201,7 @@ function viewEmployeesByManager() {
         .then(() => loadMainPrompts());
     });
 }
+
 // delete employee
 function removeEmployee() {
   db.findAllEmployees()
@@ -221,7 +222,7 @@ function removeEmployee() {
         .then(res => db.removeEmployee(res.employeeId))
         .then(() => console.log("Removed employee from the database"))
         .then(() => loadMainPrompts())
-    })
+    });
 }
 // update role
 function updateEmployeeRole() {
