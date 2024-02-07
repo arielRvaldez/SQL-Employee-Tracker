@@ -32,7 +32,7 @@ The following picture shows application example of logo:
 ![](./examples/logo-sample.jpeg)
 
 ## Walkthrough Video:
-Here is a <a href="https://drive.google.com/file/d/1tDCwJYoW2IlsRZp58e2KCShYssqWBdxI/view" target="_blank">Link</a> to a video walkthrough that demonstrates the functionality of the application.
+Here is a <a href="https://drive.google.com/file/d/1O6u0NBBcj3jP2jA_c49mHi-pV14b2RLo/view" target="_blank">Link</a> to a video walkthrough that demonstrates the functionality of the application.
 
 ## Author
 Here is my <a href="https://github.com/arielRvaldez/SQL-Employee-Tracker.git" target="_blank">Github Repo Link</a>.
@@ -41,4 +41,5 @@ Here is my <a href="https://github.com/arielRvaldez/SQL-Employee-Tracker.git" ta
 - NPM References https://www.npmjs.com/package/promise-mysql
 - Youtube https://www.youtube.com/watch?v=boaSDVO-5wQ
 - Calendy Tutor
-- MySQL Reference https://dev.mysql.com/doc/refman/8.0/en/insert.html
+- MySQL References https://dev.mysql.com/doc/refman/8.0/en/insert.html and https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html
+- W3 Schools Reference https://www.w3schools.com/sql/sql_ref_keywords.asp
