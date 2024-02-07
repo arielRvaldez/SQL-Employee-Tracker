@@ -85,9 +85,9 @@ function loadMainPrompts() {
       case "VIEW_EMPLOYEES":
         viewEmployees();
         break;
-      case "VIEW_EMPLOYEES_BY_DEPARTMENT":
-        viewEmployeesByDepartment();
-        break;
+      // case "VIEW_EMPLOYEES_BY_DEPARTMENT":
+      //   viewEmployeesByDepartment();
+      //   break;
       case "VIEW_EMPLOYEES_BY_MANAGER":
         viewEmployeesByManager();
         break;
