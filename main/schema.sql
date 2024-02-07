@@ -12,15 +12,11 @@ CREATE TABLE department (
 
 DROP TABLE IF EXISTS role;
 CREATE TABLE role (
-    id INT AUTO_INCREMENT,
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    role_id INT NOT NULL,
     title VARCHAR(30) NOT NULL,
     salary DECIMAL(10, 2) NOT NULL,
     department_id INT,
-
-    PRIMARY KEY(id),
-    INDEX (department_id),
-    INDEX (title),
-    [CONSTRAINT [symbol]] 
     FOREIGN KEY [department_id]
     REFERENCES department (department_name)
     [ON DELETE SET NULL]
@@ -34,15 +30,13 @@ CREATE TABLE employee (
     last_name VARCHAR(30) NOT NULL,
     role_id INT,
     manager_id INT,
-    [CONSTRAINT [symbol]] 
-    FOREIGN KEY [role_id] 
-    REFERENCES role (role_id)
+    FOREIGN KEY (role_id) 
+    REFERENCES role(id)
+   [ON DELETE SET NULL]
+    FOREIGN KEY (manager_id)
+    REFERENCES employee(id)
     [ON DELETE SET NULL]
-    [ON UPDATE CASCADE],
-    [CONSTRAINT [symbol]]
-    FOREIGN KEY [manager_id]
-    REFERENCES employeeid)
-    ON DELETE NOT NULL  
+    [ON UPDATE CASCADE] 
 );
 
   

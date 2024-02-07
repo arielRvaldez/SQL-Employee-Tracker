@@ -62,15 +62,15 @@ app.get('/api/employees', (req, res) => {
   })
 })
 
-//select employees by department  
-app.get('/api/employees/:department', (req, res) => {
-  let sql= `SELECT * FROM employees WHERE department = '${req.params.department}'`;
-  let query = db.query(sql, (err, results) => {
-    if (err) {throw err}
-    console.log(results)
-    res.send('Employees in department fetched...')
-  })
-})
+// //select employees by department  
+// app.get('/api/employees/:department', (req, res) => {
+//   let sql= `SELECT * FROM employees WHERE department = '${req.params.department}'`;
+//   let query = db.query(sql, (err, results) => {
+//     if (err) {throw err}
+//     console.log(results)
+//     res.send('Employees in department fetched...')
+//   })
+// })
 
 //select employees by manager
 app.get('/api/employees/:manager', (req, res) => {
@@ -80,7 +80,7 @@ app.get('/api/employees/:manager', (req, res) => {
     console.log(results)
     res.send('Employees by selected manager fetched...')
   })
-}
+})
 
 //update employee
 app.put('/api/employee/:id', (req, res) => {
@@ -103,7 +103,7 @@ app.delete('/api/employee/:id', (req, res) => {
 
 app.use((req, res) => {
   res.status(404).end();
-}));
+});
 
 app.listen('3001', () => {
   console.log('Server started on port 3001')

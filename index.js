@@ -141,35 +141,35 @@ function viewEmployees() {
     })
     .then(() => loadMainPrompts());
 }
-// View employees by department
-function viewEmployeesByDepartment() {
-  db.findAllDepartments()
-    .then(([rows]) => {
-      let department = rows;
-      const departmentChoices = department.map(({ id, name }) => ({ 
-        name: department.name,
-        value: id}));
+// // View employees by department
+// function viewEmployeesByDepartment() {
+//   db.findAllDepartments()
+//     .then(([rows]) => {
+//       let department = rows;
+//       const departmentChoices = department.map(({ id, name }) => ({ 
+//         name: department.name,
+//         value: id}));
       
-      prompt([
-        {
-          type: "list",
-          name: "department.id",
-          message: "What department do you want to view employees for?",
-          choices: departmentChoices
-        }
-      ])
-        .then(res => {
-          let department_id = res.department_id;
-          db.viewEmployeesByDepartment(department_id);
-        })
-        .then(([rows]) => {
-          let employees = rows;
-          console.log("\n");
-          console.table(employees);
-        })
-        .then(() => loadMainPrompts());
-    });
-}
+//       prompt([
+//         {
+//           type: "list",
+//           name: "department.id",
+//           message: "What department do you want to view employees for?",
+//           choices: departmentChoices
+//         }
+//       ])
+//         .then(res => {
+//           let department_id = res.department_id;
+//           db.viewEmployeesByDepartment(department_id);
+//         })
+//         .then(([rows]) => {
+//           let employees = rows;
+//           console.log("\n");
+//           console.table(employees);
+//         })
+//         .then(() => loadMainPrompts());
+//     });
+// }
 
 // View all employees by manager
 function viewEmployeesByManager() {
@@ -426,7 +426,8 @@ function removeDepartment() {
         .then(() => console.log("Removed department from the database"))
         .then(() => loadMainPrompts())
     })
-}   
+}
+
 // view departments and their total utilized department budget
 function viewUtilizedBudgetByDepartment() {
   db.viewDepartmentBudgets()

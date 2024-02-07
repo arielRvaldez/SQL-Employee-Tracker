@@ -95,13 +95,13 @@ class DB {
     return this.connection.query("DELETE FROM department WHERE id = ?",
       department_id);
   }
-  // find employees by department with role titles
-  viewEmployeesByDepartment(department_id) {
-    return this.connection.query(
-      "SELECT employee.id, employee.first_name, employee.last_name, role.title FROM employee LEFT JOIN role on employee.role_id = role.id LEFT JOIN department department on role.department_id = department_id WHERE department_name = ?;",
-      department_id
-    );
-  }
+  // // find employees by department with role titles
+  // viewEmployeesByDepartment(department_id) {
+  //   return this.connection.query(
+  //     "SELECT employee.id, employee.first_name, employee.last_name, role.title FROM employee LEFT JOIN role on employee.role_id = role.id LEFT JOIN department department on role.department_id = department_id WHERE department_name = ?;",
+  //     department_id
+  //   );
+  
   // find employees by manager, with departments and roles titles
   viewEmployeesByManager(managerId) {
     return this.connection.query(
